@@ -24,9 +24,9 @@ def test_facts_from_mock_event():
     assert FACTS["spill_min"] == 105
 
 
-def test_prompt_ends_with_the():
-    prompt = build_prompt(FACTS)
-    assert prompt.endswith("Explanation: The")
+def test_prompt_ends_with_seed():
+    prompt, seed = build_prompt(FACTS)
+    assert prompt.endswith("should reach the intake in about")
     assert "ETA to intake 95 min" in prompt
 
 
@@ -37,13 +37,13 @@ def test_checker_rejects_invented_number():
 
 
 def test_good_output_is_used():
-    text = " pollution is 91% likely, 95 min from the intake."
+    text = " 95 minutes."
     result = explain(EVENT, DECISION, fake_llm(text))
     assert result["source"] == "granite"
-    assert result["text"].startswith("The pollution")
+    assert result["text"].startswith("The sensors show")
 
 
 def test_bad_output_falls_back():
-    result = explain(EVENT, DECISION, fake_llm(" event ends in 3 hours."))
+    result = explain(EVENT, DECISION, fake_llm(" 3 hours."))
     assert result["source"] == "template"
     assert "95" in result["text"]

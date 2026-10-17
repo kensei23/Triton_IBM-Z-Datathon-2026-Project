@@ -3,9 +3,8 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-from configs import settings
-
 SHOT_FILE = Path(__file__).resolve().parents[3] / "configs/llm/shot.txt"
+TAIL_TOKENS = 12
 
 
 def _minutes_since_spill(event):
@@ -30,17 +29,24 @@ def build_facts(event, decision):
 
 
 def build_prompt(facts):
+    """Return the full prompt and the seed, granite only continues the seed."""
     if facts["spill_min"] is None:
-        spill = "no spill recorded upstream"
+        spill_event = "no spill recorded upstream"
+        spill_seed = ""
     else:
-        spill = f"spill upstream {facts['spill_min']} min ago"
+        spill_event = f"spill upstream {facts['spill_min']} min ago"
+        spill_seed = f" after a spill {facts['spill_min']} min ago"
     line = (
-        f"Event: unusual {facts['features']}, {spill}, "
+        f"Event: unusual {facts['features']}, {spill_event}, "
         f"probability {facts['pct']}%, ETA to intake {facts['eta']} min."
     )
+    seed = (
+        f"Explanation: The sensors show unusual {facts['features']}{spill_seed}, "
+        f"and the pollution is {facts['pct']}% likely and should reach the "
+        "intake in about"
+    )
     shot = SHOT_FILE.read_text().rstrip("\n")
-    # ends on "The" so the first token isnt a newline
-    return f"{shot}\n\n{line}\nExplanation: The"
+    return f"{shot}\n\n{line}\n{seed}", seed
 
 
 def numbers_ok(text, facts):
@@ -65,21 +71,19 @@ def fallback_text(facts, decision):
 
 def explain(event, decision, llm):
     facts = build_facts(event, decision)
+    prompt, seed = build_prompt(facts)
     start = time.time()
-    out = llm(
-        build_prompt(facts),
-        max_tokens=settings["max_tokens"],
-        temperature=0,
-        stop=["\n"],
-    )
+    out = llm(prompt, max_tokens=TAIL_TOKENS, temperature=0, stop=["\n"])
     seconds = round(time.time() - start, 1)
 
-    text = "The" + out["choices"][0]["text"].rstrip()
-    # keep just the first sentence
-    if "." in text:
-        text = text.split(".")[0] + "."
+    tail = out["choices"][0]["text"].rstrip()
+    # keep to the end of the first sentence
+    if "." in tail:
+        tail = tail.split(".")[0] + "."
+    text = seed.removeprefix("Explanation: ") + tail
 
-    if numbers_ok(text, facts):
+    # an unfinished sentence also counts as a fail
+    if text.endswith(".") and numbers_ok(text, facts):
         return {"text": text, "source": "granite", "seconds": seconds}
     return {
         "text": fallback_text(facts, decision),
