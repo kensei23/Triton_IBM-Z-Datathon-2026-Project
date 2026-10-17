@@ -1,0 +1,5 @@
+{
+  "close_prob": 0.8,
+  "close_eta_min": 180,
+  "alert_prob": 0.6
+}

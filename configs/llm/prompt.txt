@@ -1,0 +1,5 @@
+Event: dissolved oxygen dropped 40%, ammonium rose, spill upstream 2h ago, ETA to intake 95 min.
+Explanation: Oxygen fell and ammonium rose after a sewage spill upstream, and the pollution should reach the intake in about 95 minutes.
+
+Event: dissolved oxygen dropped 35%, ammonium rose, spill upstream 3h ago, ETA to intake 120 min.
+Explanation: The
