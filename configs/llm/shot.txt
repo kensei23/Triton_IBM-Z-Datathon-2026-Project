@@ -1,0 +1,2 @@
+Event: unusual dissolved oxygen and ammonium, spill upstream 120 min ago, probability 91%, ETA to intake 95 min.
+Explanation: The sensors show unusual dissolved oxygen and ammonium readings after a spill upstream 120 min ago, and the pollution is 91% likely and about 95 minutes from the intake.

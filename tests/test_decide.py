@@ -6,9 +6,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from src.agent.decide import decide  # noqa: E402
+from triton.agent.decide import decide  # noqa: E402
 
-MOCK = json.loads((ROOT / "src/agent/mock_event.json").read_text())
+MOCK = json.loads((ROOT / "src/triton/agent/mock_event.json").read_text())
 
 
 def make(prob, eta):

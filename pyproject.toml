@@ -29,5 +29,5 @@ select = ["E", "F", "W", "I", "B", "RET"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 addopts = ["-ra", "--strict-markers"]
