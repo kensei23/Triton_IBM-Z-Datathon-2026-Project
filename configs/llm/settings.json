@@ -1,5 +1,5 @@
 {
-  "model_dir": "/home/aaron/models",
+  "model_dir": "models",
   "model_file": "granite-4.0-h-350m-base-be.f16.gguf",
   "quantized_file": "granite-4.0-h-350m-base-be.q8_0.gguf",
   "n_threads": 3,
