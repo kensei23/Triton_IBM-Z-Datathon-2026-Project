@@ -32,14 +32,14 @@ def main():
     out = llm(PROMPT, max_tokens=settings["max_tokens"], temperature=0.2, stop=["\n"])
     gen_s = time.time() - t
 
-    text = out["choices"][0]["text"].strip()
+    text = out["choices"][0]["text"].rstrip()
     n_tokens = out["usage"]["completion_tokens"]
     tok_s = n_tokens / gen_s
 
     print("model:", MODEL_PATH.name)
     print(f"load: {load_s:.1f}s | generate: {gen_s:.2f}s")
     print(f"{n_tokens} tokens | {tok_s:.1f} tok/s")
-    print("output:", text)
+    print("output: The" + text)
 
     assert text, "model returned empty text"
     assert gen_s < 15, f"generation too slow: {gen_s:.1f}s"
