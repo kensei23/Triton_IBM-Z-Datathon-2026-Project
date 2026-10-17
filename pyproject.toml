@@ -3,6 +3,7 @@ name = "triton"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
+    "llama-cpp-python>=0.3.36",
     "matplotlib>=3.11.2",
     "numpy>=2.5.4",
     "pandas>=3.0.6",

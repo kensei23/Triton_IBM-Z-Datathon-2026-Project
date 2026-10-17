@@ -1,0 +1,13 @@
+cat > configs/llm/prompt.txt << 'EOF'
+Write a one sentence explanation of a river pollution alert.
+
+Event: dissolved oxygen dropped 40%, ammonium rose, spill upstream 2h ago, ETA to intake 95 min.
+Explanation: Oxygen fell and ammonium rose after a sewage spill upstream, and the pollution should reach the intake in about 95 minutes.
+
+Event: conductivity spiked, turbidity rose, spill upstream 1h ago, ETA to intake 40 min.
+Explanation: Conductivity and turbidity jumped following a recent upstream spill, and the pollution is about 40 minutes from the intake.
+
+Event: dissolved oxygen dropped 35%, ammonium rose, spill upstream 3h ago, ETA to intake 120 min.
+Explanation:
+EOF
+truncate -s -1 configs/llm/prompt.txt
