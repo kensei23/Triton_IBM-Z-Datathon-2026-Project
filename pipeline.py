@@ -41,24 +41,15 @@ OUTLIER_Z = 5
 DATE_COLUMNS = {"timestamp", "start", "end"}
 
 LEE = r"\b(?:Lee|Lea|Pymmes|Salmon|Ching)\b"
-BRENT = r"\b(?:Brent|Dollis|Silk Stream|Wealdstone|Edgware Brook|Wembley Brook)\b"
-RODING = r"\b(?:Roding|Chigwell Brook|Cripsey)\b"
 
-# direction: where upstream outfalls lie. The Lee, Brent and Roding flow south,
-# the Ravensbourne flows north, and the tidal Thames flows both ways.
+# direction: where upstream outfalls lie. The Lee flows south and the tidal Thames
+# flows both ways. Brent and Roding stations were tested and dropped: their sensors
+# showed no clear response to upstream spills (anomaly lift 0.9 to 1.7).
 STATIONS = {
     "E01336A": {"name": "Lee Springfield Park", "outfall_river": LEE, "direction": "north",
                 "km": 15, "gauge_river": r"\b(?:Lee|Lea)\b"},
     "E26020A": {"name": "Lee Lea Bridge Weir", "outfall_river": LEE, "direction": "north",
                 "km": 15, "gauge_river": r"\b(?:Lee|Lea)\b"},
-    "E03590A": {"name": "Brent upstream Ealing Golf Course", "outfall_river": BRENT,
-                "direction": "north", "km": 15, "gauge_river": r"\bBrent\b"},
-    "E08380A": {"name": "Brent Ealing Golf Course", "outfall_river": BRENT,
-                "direction": "north", "km": 15, "gauge_river": r"\bBrent\b"},
-    "E02790A": {"name": "Roding Little Ilford", "outfall_river": RODING, "direction": "north",
-                "km": 15, "gauge_river": r"\bRoding\b"},
-    "E45998A": {"name": "Ravensbourne Glassmill Lane", "outfall_river": r"\bRavensbourne\b",
-                "direction": "south", "km": 15, "gauge_river": r"\bRavensbourne\b"},
     "HAMME2": {"name": "Thames Hammersmith", "outfall_river": r"\bThames\b",
                "direction": "both", "km": 8, "gauge_river": r"\bThames\b"},
     "BREPON": {"name": "Thames Brentford", "outfall_river": r"\b(?:Thames|Brent)\b",
@@ -319,6 +310,15 @@ def build_labels(readings, spills, upstream, z_thr=2.5):
     return pd.concat(frames, ignore_index=True)
 
 
+def anomaly_lift(station_labels, z_thr=2.5):
+    # How much more often the sensors look abnormal during spill windows than outside them.
+    # Near 1 means the labels are mostly chance; well above 1 means spills really move the sensors.
+    anomaly = (station_labels["z_do"] < -z_thr) | (station_labels["z_nh4"] > z_thr)
+    inside = anomaly[station_labels["spill_recent"]].mean()
+    outside = anomaly[~station_labels["spill_recent"]].mean()
+    return inside / outside if outside > 0 else float("nan")
+
+
 def gauge_candidates(prop, stations):
     items = get_json(f"{EA}/id/measures.json", observedProperty=prop, _limit=20000)
     m = pd.DataFrame([{"measure": i["notation"], "period": i.get("period"), "station_id": station_id(i)}
@@ -357,7 +357,8 @@ def main(refresh=False):
     coords = stations.loc[list(STATIONS), ["easting", "northing"]]
 
     print("Sensor readings")
-    readings, quality = clean_readings(cached(RAW / "raw_readings.csv", download_readings, refresh))
+    raw = cached(RAW / "raw_readings.csv", download_readings, refresh)
+    readings, quality = clean_readings(raw[raw["station_id"].isin(STATIONS)])
     print(quality.to_string(index=False))
 
     print("Sewage spills")
@@ -393,7 +394,8 @@ def main(refresh=False):
                                                spill_recent=("spill_recent", "mean"),
                                                label_rate=("label", "mean"), label_hours=("label", "sum"))
     summary["upstream_spills"] = [len(station_spills(spills, upstream, s)) for s in summary.index]
-    print(summary.round(4).to_string())
+    summary["anomaly_lift"] = [anomaly_lift(labels[labels["station_id"] == s]) for s in summary.index]
+    print(summary.round({"spill_recent": 4, "label_rate": 4, "anomaly_lift": 2}).to_string())
     for sid, m in meta.items():
         print(f"{m['name']}: rain {m['rain_gauge']['label']} ({m['rain_gauge']['km']} km), "
               f"flow {m['flow_gauge']['label']} ({m['flow_gauge']['km']} km)")
