@@ -6,7 +6,6 @@ def decide(event):
     prob = event["pollution_probability"]
     eta = event["eta_minutes_to_intake"]
 
-    # both conditions needed to close, the EA alert only needs confidence
     close_intake = (
         prob >= thresholds["close_prob"] and eta < thresholds["close_eta_min"]
     )

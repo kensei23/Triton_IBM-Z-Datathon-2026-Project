@@ -11,7 +11,6 @@ FACTS = build_facts(EVENT, DECISION)
 
 
 def fake_llm(text):
-    # stands in for granite so these tests dont need the model
     def run(prompt, **kwargs):
         return {"choices": [{"text": text}]}
 

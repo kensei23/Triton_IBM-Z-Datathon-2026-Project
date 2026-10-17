@@ -2,7 +2,6 @@ import sys
 import time
 from pathlib import Path
 
-# tests/ isn't on the path by default so add the repo root to import configs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from configs import settings
@@ -10,7 +9,7 @@ from llama_cpp import Llama
 
 MODEL_PATH = Path(settings["model_dir"]) / settings["active_model"]
 
-# Grab the pre-made promt from prompt.txt which is used to simulate
+# Grab the pre-made promt from prompt.txt
 PROMPT_FILE = Path(__file__).resolve().parent.parent / "configs/llm/prompt.txt"
 PROMPT = PROMPT_FILE.read_text().rstrip("\n")
 
