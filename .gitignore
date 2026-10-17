@@ -1,5 +1,6 @@
 # Data — never committed (see data/README.md)
 data/raw
+data/interim
 data/processed
 
 # Models and generated outputs
