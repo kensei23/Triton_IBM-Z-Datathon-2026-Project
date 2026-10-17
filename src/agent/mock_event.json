@@ -1,0 +1,14 @@
+{
+  "station_id": "demo-station-1",
+  "timestamp": "2026-10-17T14:15:00Z",
+  "pollution_probability": 0.91,
+  "top_features": [
+    {"name": "dissolved_oxygen", "shap": -0.42},
+    {"name": "ammonium", "shap": 0.31}
+  ],
+  "eta_minutes_to_intake": 95,
+  "intake_id": "demo-intake-1",
+  "upstream_spills": [
+    {"site": "Demo CSO", "start": "2026-10-17T12:30:00Z", "duration_min": 40}
+  ]
+}

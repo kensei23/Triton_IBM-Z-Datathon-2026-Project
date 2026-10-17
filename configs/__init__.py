@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
-# every script reads its settings from the settings json
-_path = Path(__file__).parent / "llm" / "settings.json"
-settings = json.loads(_path.read_text())
+_here = Path(__file__).parent
+
+# every script reads its settings from these files
+settings = json.loads((_here / "llm" / "settings.json").read_text())
+thresholds = json.loads((_here / "agent" / "thresholds.json").read_text())
