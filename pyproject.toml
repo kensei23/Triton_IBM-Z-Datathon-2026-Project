@@ -3,6 +3,7 @@ name = "triton"
 version = "0.1.0"
 requires-python = ">=3.13"
 dependencies = [
+    "llama-cpp-python>=0.3.36",
     "matplotlib>=3.11.2",
     "numpy>=2.5.4",
     "openpyxl>=3.1.5",
@@ -33,5 +34,5 @@ select = ["E", "F", "W", "I", "B", "RET"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 addopts = ["-ra", "--strict-markers"]

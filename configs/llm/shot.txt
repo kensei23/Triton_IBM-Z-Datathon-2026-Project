@@ -1,0 +1,2 @@
+Event: unusual turbidity and conductivity, spill upstream 60 min ago, probability 84%, ETA to intake 140 min.
+Explanation: The sensors show unusual turbidity and conductivity after a spill 60 min ago, and the pollution is 84% likely and should reach the intake in about 140 minutes.
