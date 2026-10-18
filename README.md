@@ -82,9 +82,9 @@ fact check and used the template.
 ![Precision vs recall](outputs/figures/pr_curve.png)
 
 What drives the predictions (permutation importance): how recently the
-overflow last spilled, rain over the last 30 days (how wet the ground is), the
-**hour of day** (spills peak at 7-9am and 6-8pm, when the daily sewage flow
-peak tips a full treatment works over), and the site itself.
+overflow last spilled, the site itself, rain over the last 30 days (how wet the
+ground is), and the **hour of day** (spills peak at 7-9am and 6-8pm, when the
+daily sewage flow peak tips a full treatment works over).
 
 Full numbers: [`outputs/metrics.json`](outputs/metrics.json). Figures:
 [`outputs/figures/`](outputs/figures/). Exploration:
