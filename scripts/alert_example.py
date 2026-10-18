@@ -14,24 +14,14 @@ import pandas as pd
 
 from triton import alerts
 from triton import model as m
-from triton.constants import PROCESSED_DIR, RAW_DIR
 from triton.decision import decide, load_thresholds
-
-
-def load_tables():
-    panel = pd.read_csv(PROCESSED_DIR / "model_table.csv.gz")
-    panel["timestamp"] = pd.to_datetime(panel["timestamp"], utc=True)
-    episodes = pd.read_csv(PROCESSED_DIR / "episodes.csv.gz")
-    for col in ("start", "end"):
-        episodes[col] = pd.to_datetime(episodes[col], utc=True, format="ISO8601")
-    sites = pd.read_csv(RAW_DIR / "sites_selected.csv.gz").set_index("site_id")
-    return panel, episodes, sites
+from triton.tables import load_episodes, load_panel, load_sites
 
 
 def main(site_id, when, use_llm):
     bundle = m.load_bundle()
     thresholds = load_thresholds()
-    panel, episodes, sites = load_tables()
+    panel, episodes, sites = load_panel(), load_episodes(), load_sites()
 
     if site_id and when:
         t = pd.Timestamp(when, tz="UTC")

@@ -7,7 +7,7 @@
   "train_positive_rate": 0.0331,
   "test_positive_rate": 0.0212,
   "sites": 40,
-  "fit_seconds": 15.4,
+  "fit_seconds": 15.5,
   "model": {
     "pr_auc": 0.3202,
     "roc_auc": 0.9296,

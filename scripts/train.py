@@ -22,23 +22,14 @@ from triton.constants import (
     FIGURES_DIR,
     MODELS_DIR,
     OUTPUTS_DIR,
-    PROCESSED_DIR,
 )
 from triton.features import HORIZON_H, target_name
+from triton.tables import load_episodes, load_panel
 
 # INTERVENE acts automatically, so at least half its alarms must be real.
 INTERVENE_MIN_PRECISION = 0.5
 # NOTIFY goes to a person, so it should flag most spill hours.
 NOTIFY_MIN_RECALL = 0.6
-
-
-def load():
-    panel = pd.read_csv(PROCESSED_DIR / "model_table.csv.gz")
-    panel["timestamp"] = pd.to_datetime(panel["timestamp"], utc=True)
-    episodes = pd.read_csv(PROCESSED_DIR / "episodes.csv.gz")
-    for col in ("start", "end"):
-        episodes[col] = pd.to_datetime(episodes[col], utc=True, format="ISO8601")
-    return panel, episodes
 
 
 def describe(name, rows, y):
@@ -49,7 +40,7 @@ def describe(name, rows, y):
 
 def main(test_from):
     target = target_name(HORIZON_H)
-    panel, episodes = load()
+    panel, episodes = load_panel(), load_episodes()
     train, test = m.time_split(panel, pd.Timestamp(test_from, tz="UTC"))
     X_train, y_train = train[m.MODEL_FEATURES], train[target].to_numpy()
     X_test, y_test = test[m.MODEL_FEATURES], test[target].to_numpy()

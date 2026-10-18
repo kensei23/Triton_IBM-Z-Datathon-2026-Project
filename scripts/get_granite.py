@@ -4,7 +4,7 @@ Usage: uv run python scripts/get_granite.py [--dir models/llm]
 
 IBM publishes little-endian GGUF files. IBM Z (s390x) is big-endian, so on a
 big-endian machine the file is byte-swapped with the `gguf` package's
-gguf-convert-endian tool (run through uvx, so it isn't a project dependency)
+gguf-convert-endian tool (run with `uv tool run`, so not a project dependency)
 and saved under the big-endian name from configs/llm/alerts.json.
 The model file is never committed (see .gitignore).
 """
@@ -53,7 +53,16 @@ def main(folder):
     if sys.byteorder == "big":
         print("big-endian machine (IBM Z): converting byte order, takes a minute")
         subprocess.run(
-            ["uvx", "--from", "gguf", "gguf-convert-endian", str(little), "big"],
+            [
+                "uv",
+                "tool",
+                "run",
+                "--from",
+                "gguf",
+                "gguf-convert-endian",
+                str(little),
+                "big",
+            ],
             input="YES\n",
             text=True,
             check=True,
