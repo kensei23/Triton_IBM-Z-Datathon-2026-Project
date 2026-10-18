@@ -26,7 +26,14 @@ SPILL_COLUMNS = ["site_id", "start", "end", "source"]
 SITE_COLUMNS = ["site_id", "name", "permit", "river", "easting", "northing"]
 
 
-def tw_page(endpoint, offset, limit=1000, retries=6):
+def tw_page(endpoint, offset, limit=1000, retries=6, wait=10):
+    """One page of the Thames Water API, retrying rate limits and bad pages.
+
+    The API occasionally answers 200 with no "items" list; that is retried
+    too, and if it keeps happening the page is treated as empty (with a
+    warning) so the caller stops paging instead of crashing.
+    """
+    body = None
     for attempt in range(retries):
         r = requests.get(
             f"{TW_API}/{endpoint}",
@@ -34,11 +41,20 @@ def tw_page(endpoint, offset, limit=1000, retries=6):
             timeout=120,
         )
         if r.status_code == 429:
-            time.sleep(int(r.headers.get("Retry-After", 10 * (attempt + 1))))
+            time.sleep(int(r.headers.get("Retry-After", wait * (attempt + 1))))
             continue
         r.raise_for_status()
-        return r.json()["items"]
-    raise RuntimeError(f"Thames Water API still rate limiting at offset {offset}")
+        body = r.json()
+        if isinstance(body, dict) and "items" in body:
+            return body["items"]
+        time.sleep(wait * (attempt + 1))
+    if body is None:
+        raise RuntimeError(f"Thames Water API still rate limiting at offset {offset}")
+    print(
+        f"  WARNING: Thames Water API gave no items at offset {offset} after "
+        f"{retries} tries, stopping here. Response: {str(body)[:200]}"
+    )
+    return []
 
 
 def download_sites(limit=1000, pause=1.5):

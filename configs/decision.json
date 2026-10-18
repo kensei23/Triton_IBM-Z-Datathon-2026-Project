@@ -1,7 +1,7 @@
 {
   "horizon_h": 6,
   "intervene": 0.1179,
-  "notify": 0.0533,
+  "notify": 0.0535,
   "rules": {
     "INTERVENE": "lowest p with test precision >= 0.5",
     "NOTIFY": "highest p with test recall >= 0.6"

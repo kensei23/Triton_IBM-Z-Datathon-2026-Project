@@ -1,5 +1,6 @@
 import pandas as pd
 
+from triton.data import spills
 from triton.data.spills import (
     alerts_to_events,
     combine_events,
@@ -107,3 +108,27 @@ def test_top_sites_needs_events_every_year():
         }
     )
     assert top_sites(df, n=5, min_events_per_year=3) == ["A"]
+
+
+class FakeResponse:
+    def __init__(self, body, status=200):
+        self.body, self.status_code, self.headers = body, status, {}
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return self.body
+
+
+def test_tw_page_retries_a_page_without_items(monkeypatch):
+    replies = iter([FakeResponse({"meta": {}}), FakeResponse({"items": [1, 2]})])
+    monkeypatch.setattr(spills.requests, "get", lambda *a, **k: next(replies))
+    assert spills.tw_page("alerts", 0, wait=0) == [1, 2]
+
+
+def test_tw_page_gives_up_politely(monkeypatch):
+    monkeypatch.setattr(
+        spills.requests, "get", lambda *a, **k: FakeResponse({"error": "busy"})
+    )
+    assert spills.tw_page("alerts", 0, retries=2, wait=0) == []

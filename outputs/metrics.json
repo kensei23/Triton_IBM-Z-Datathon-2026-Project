@@ -3,25 +3,25 @@
   "target": "spill_start_next_6h",
   "test_from": "2026-01-01",
   "train_rows": 583838,
-  "test_rows": 243118,
+  "test_rows": 243161,
   "train_positive_rate": 0.0331,
-  "test_positive_rate": 0.0212,
+  "test_positive_rate": 0.0213,
   "sites": 40,
-  "fit_seconds": 15.5,
+  "fit_seconds": 23.2,
   "model": {
-    "pr_auc": 0.3202,
+    "pr_auc": 0.3196,
     "roc_auc": 0.9296,
-    "brier": 0.01868
+    "brier": 0.01869
   },
   "rain_baseline": {
-    "pr_auc": 0.0487,
-    "roc_auc": 0.72,
-    "brier": 0.02062
+    "pr_auc": 0.0488,
+    "roc_auc": 0.7208,
+    "brier": 0.02064
   },
-  "climatology_brier": 0.02094,
+  "climatology_brier": 0.02096,
   "thresholds": {
     "INTERVENE": 0.1179,
-    "NOTIFY": 0.0533
+    "NOTIFY": 0.0535
   },
   "threshold_rules": {
     "INTERVENE": "lowest p with test precision >= 0.5",
@@ -32,13 +32,13 @@
       "threshold": 0.05,
       "precision": 0.211,
       "recall": 0.648,
-      "alert_hours_per_day": 55.01
+      "alert_hours_per_day": 55.15
     },
     {
       "threshold": 0.1,
-      "precision": 0.404,
+      "precision": 0.402,
       "recall": 0.277,
-      "alert_hours_per_day": 12.29
+      "alert_hours_per_day": 12.36
     },
     {
       "threshold": 0.2,
@@ -86,15 +86,15 @@
   "baseline_by_threshold": [
     {
       "threshold": 0.05,
-      "precision": 0.055,
-      "recall": 0.456,
-      "alert_hours_per_day": 147.73
+      "precision": 0.056,
+      "recall": 0.458,
+      "alert_hours_per_day": 147.9
     },
     {
       "threshold": 0.1,
       "precision": 0.072,
       "recall": 0.105,
-      "alert_hours_per_day": 26.31
+      "alert_hours_per_day": 26.33
     },
     {
       "threshold": 0.2,
@@ -141,57 +141,57 @@
   ],
   "at_decision_thresholds": [
     {
-      "threshold": 0.0533,
-      "precision": 0.222,
-      "recall": 0.607,
-      "alert_hours_per_day": 49.15
+      "threshold": 0.0535,
+      "precision": 0.22,
+      "recall": 0.6,
+      "alert_hours_per_day": 48.94
     },
     {
       "threshold": 0.1179,
-      "precision": 0.509,
-      "recall": 0.195,
-      "alert_hours_per_day": 6.85
+      "precision": 0.505,
+      "recall": 0.194,
+      "alert_hours_per_day": 6.89
     }
   ],
   "lead_time_notify": {
-    "episodes": 861,
-    "caught": 661,
-    "caught_pct": 76.8,
+    "episodes": 862,
+    "caught": 654,
+    "caught_pct": 75.9,
     "median_lead_h": 5.25,
     "mean_lead_h": 4.67
   },
   "lead_time_intervene": {
-    "episodes": 861,
+    "episodes": 862,
     "caught": 239,
-    "caught_pct": 27.8,
+    "caught_pct": 27.7,
     "median_lead_h": 5.0,
-    "mean_lead_h": 4.5
+    "mean_lead_h": 4.49
   },
   "rain_baseline_at_same_recall": {
     "threshold": 0.03529797464665598,
     "precision": 0.047,
-    "recall": 0.615,
-    "alert_hours_per_day": 233.36,
+    "recall": 0.617,
+    "alert_hours_per_day": 233.54,
     "lead_time": {
-      "episodes": 861,
-      "caught": 608,
-      "caught_pct": 70.6,
+      "episodes": 862,
+      "caught": 610,
+      "caught_pct": 70.8,
       "median_lead_h": 5.5,
       "mean_lead_h": 4.96
     }
   },
   "permutation_importance": {
-    "rain_1h": -0.0015,
-    "rain_3h": -0.0152,
-    "rain_6h": -0.0164,
-    "rain_24h": -0.0138,
-    "rain_7d": 0.0201,
-    "rain_30d": 0.0962,
-    "rain_max_1h_24h": -0.0005,
-    "hours_since_spill": 0.2378,
-    "spills_7d": -0.0046,
-    "hour": 0.0843,
-    "month": 0.0118,
-    "site_code": 0.075
+    "rain_1h": 0.0023,
+    "rain_3h": -0.0121,
+    "rain_6h": -0.0129,
+    "rain_24h": -0.007,
+    "rain_7d": 0.0216,
+    "rain_30d": 0.0965,
+    "rain_max_1h_24h": 0.0028,
+    "hours_since_spill": 0.2532,
+    "spills_7d": -0.0025,
+    "hour": 0.0717,
+    "month": 0.0204,
+    "site_code": 0.0996
   }
 }
