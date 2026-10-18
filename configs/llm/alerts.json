@@ -1,0 +1,8 @@
+{
+  "chat_model": "granite-4.0-h-350m-Q8_0.gguf",
+  "chat_model_big_endian": "granite-4.0-h-350m-be.q8_0.gguf",
+  "chat_model_url": "https://huggingface.co/ibm-granite/granite-4.0-h-350m-GGUF/resolve/main/granite-4.0-h-350m-Q8_0.gguf",
+  "max_tokens": 70,
+  "temperature": 0,
+  "system": "You write short alerts for sewage works operators. Use only the facts given. Do not add any number, time period or claim that is not in the facts, and do not repeat the spill chance. Plain English, one sentence, no lists."
+}

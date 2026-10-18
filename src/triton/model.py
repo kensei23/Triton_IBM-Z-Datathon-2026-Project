@@ -4,8 +4,13 @@ The model only scores hours when an overflow is not already spilling: that is
 when an early warning is useful, and while it spills a "new" spill can't start.
 """
 
+import platform
+import sys
+
+import joblib
 import numpy as np
 import pandas as pd
+import sklearn
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.isotonic import IsotonicRegression
@@ -16,9 +21,11 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 
+from triton.constants import MODELS_DIR
 from triton.features import CATEGORICAL, FEATURES
 
 MODEL_FEATURES = [f for f in FEATURES if f != "spilling_now"]
+MODEL_PATH = MODELS_DIR / "spill_model.joblib"
 TEST_FROM = pd.Timestamp("2026-01-01", tz="UTC")
 REPORT_THRESHOLDS = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
 
@@ -135,3 +142,38 @@ def lead_summary(leads):
         "median_lead_h": round(float(np.median(caught)), 2) if len(caught) else None,
         "mean_lead_h": round(float(np.mean(caught)), 2) if len(caught) else None,
     }
+
+
+def platform_info():
+    return {
+        "machine": platform.machine(),
+        "byteorder": sys.byteorder,
+        "sklearn": sklearn.__version__,
+    }
+
+
+def load_bundle(path=MODEL_PATH):
+    """Load the trained model, refusing one built on an incompatible machine.
+
+    s390x (IBM Z) is big-endian and x86 is little-endian; scikit-learn's tree
+    code needs arrays in the machine's own byte order, so a model must be
+    trained on the kind of machine that runs it.
+    """
+    if not path.exists():
+        raise FileNotFoundError(
+            f"{path} not found, run: uv run python scripts/train.py"
+        )
+    bundle = joblib.load(path)
+    here = platform_info()
+    built = {k: bundle.get(k) for k in here}
+    if built["byteorder"] != here["byteorder"] or built["sklearn"] != here["sklearn"]:
+        raise RuntimeError(
+            f"model was trained on {built} but this machine is {here}; "
+            "retrain here with: uv run python scripts/train.py"
+        )
+    return bundle
+
+
+def predict(bundle, rows):
+    """Spill probability for each row of the modelling table."""
+    return bundle["model"].predict_proba(rows[bundle["features"]])[:, 1]

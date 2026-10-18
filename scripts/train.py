@@ -151,8 +151,11 @@ def main(test_from):
             "site_codes": site_codes.to_dict(),
             "test_from": test_from,
             "importance": importance,
+            # typical conditions, used to explain what pushed a prediction up
+            "reference": X_train.median().to_dict(),
+            **m.platform_info(),
         },
-        MODELS_DIR / "spill_model.joblib",
+        m.MODEL_PATH,
     )
     decision = {
         "horizon_h": HORIZON_H,

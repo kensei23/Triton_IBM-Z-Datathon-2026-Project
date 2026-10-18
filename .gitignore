@@ -2,10 +2,9 @@
 data/raw
 data/processed
 
-# Models and generated outputs
-models/*
-!models/.gitkeep
-outputs/
+# LLM weights are never committed; our trained ML models and outputs are
+models/llm
+*.gguf
 
 # Experiment tracking
 mlruns/
