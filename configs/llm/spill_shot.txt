@@ -1,0 +1,8 @@
+Facts: Windsor on the River Thames. Spill chance 34% in the next 6 hours. Reasons: 96 mm of rain in the last 30 days; the last spill ended 8 hours ago. Similar past case: 3 Feb 2025, spilled for 5 hours.
+Alert: Windsor on the River Thames has a high risk of spilling within 6 hours (34% chance). The ground is still wet from 96 mm of rain in the last 30 days and the last spill ended only 8 hours ago. It looks like 3 Feb 2025, when it spilled for 5 hours.
+
+Facts: Newbury on the River Kennet. Spill chance 10% in the next 6 hours. Reasons: 18 mm of rain in the last 24 hours; 41 mm of rain in the last 7 days. Similar past case: 22 Nov 2024, spilled for 11 hours.
+Alert: Newbury on the River Kennet has a raised risk of spilling within 6 hours (10% chance). Heavy rain of 18 mm in the last 24 hours has followed 41 mm of rain in the last 7 days. It looks like 22 Nov 2024, when it spilled for 11 hours.
+
+Facts: Wantage on Letcombe Brook. Spill chance 9% in the next 6 hours. Reasons: 2 mm of rain in the last hour; the morning peak in sewer flow. Similar past case: 9 Jan 2025, spilled for 3 hours.
+Alert: Wantage on Letcombe Brook has a raised risk of spilling within 6 hours (9% chance). Rain of 2 mm in the last hour is arriving with the morning peak in sewer flow. It looks like 9 Jan 2025, when it spilled for 3 hours.

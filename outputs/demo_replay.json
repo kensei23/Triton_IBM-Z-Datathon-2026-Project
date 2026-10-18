@@ -1,0 +1,818 @@
+{
+ "start": "2026-01-07 22:00:00+00:00",
+ "end": "2026-01-09 10:00:00+00:00",
+ "machine": "s390x | Linux | IBM z17 (machine type 9175) | Python 3.13.15",
+ "granite": "granite-4.0-350m-be.q8_0.gguf (instruct, chat)",
+ "score": {
+  "spills": 33,
+  "warned": 21,
+  "median_lead_h": 1.8,
+  "alerts": 32,
+  "false_alarms": 11,
+  "lead_times_h": [
+   3.5,
+   null,
+   1.0,
+   null,
+   1.25,
+   2.0,
+   null,
+   1.5,
+   5.5,
+   0.75,
+   3.75,
+   1.5,
+   4.75,
+   null,
+   null,
+   null,
+   1.25,
+   1.75,
+   4.5,
+   0.75,
+   1.75,
+   1.75,
+   null,
+   null,
+   null,
+   2.5,
+   null,
+   2.67,
+   3.5,
+   1.47,
+   null,
+   null,
+   1.5
+  ]
+ },
+ "alerts": [
+  {
+   "site_id": "TWL00102",
+   "site_name": "Cirencester",
+   "river": "Shorncote Ditch",
+   "time": "03:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "the last spill ended 4 hours ago",
+    "this overflow's spill history",
+    "59 mm of rain in the last 30 days"
+   ],
+   "similar": {
+    "date": "31 Jan 2024",
+    "duration_h": 16,
+    "rain_7d": 3.8
+   },
+   "timestamp": "2026-01-08 03:00:00+00:00",
+   "p": 0.05615109042452531,
+   "text": "Cirencester on Shorncote Ditch has a raised risk of spilling within 6 hours (6% chance). Main reasons: the last spill ended 4 hours ago; this overflow's spill history; 59 mm of rain in the last 30 days. Conditions are like 31 Jan 2024, when it spilled for 16 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00180",
+   "site_name": "Faringdon",
+   "river": "Faringdon Stream",
+   "time": "14:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "this overflow's spill history",
+    "0.7 mm of rain in the last hour",
+    "1 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "5 Sep 2024",
+    "duration_h": 9,
+    "rain_7d": 5.1
+   },
+   "timestamp": "2026-01-08 14:00:00+00:00",
+   "p": 0.06838676007597062,
+   "text": "Faringdon on Faringdon Stream has a raised risk of spilling within 6 hours (7% chance). Main reasons: this overflow's spill history; 0.7 mm of rain in the last hour; 1 mm of rain in the last 6 hours. Conditions are like 5 Sep 2024, when it spilled for 9 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00575",
+   "site_name": "Faringdon House CSO",
+   "river": "River Thames",
+   "time": "14:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "this overflow's spill history",
+    "0.7 mm of rain in the last hour",
+    "1 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "27 Aug 2025",
+    "duration_h": 1,
+    "rain_7d": 4.1
+   },
+   "timestamp": "2026-01-08 14:00:00+00:00",
+   "p": 0.06838676007597062,
+   "text": "Faringdon House CSO on the River Thames has a raised risk of spilling within 6 hours (7% chance). Main reasons: this overflow's spill history; 0.7 mm of rain in the last hour; 1 mm of rain in the last 6 hours. Conditions are like 27 Aug 2025, when it spilled for 1 hour.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00002",
+   "site_name": "Abbess Roding",
+   "river": "Coopers Brook",
+   "time": "15:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "this overflow's spill history",
+    "the time of year",
+    "0.4 mm of rain in the last hour"
+   ],
+   "similar": {
+    "date": "23 Apr 2025",
+    "duration_h": 1,
+    "rain_7d": 3.6
+   },
+   "timestamp": "2026-01-08 15:00:00+00:00",
+   "p": 0.06505631931668321,
+   "text": "Abbess Roding on Coopers Brook has a raised risk of spilling within 6 hours (7% chance). The spill is likely due to the overflow's history, the time of year, and the 0.4 mm of rain in the last hour, which is similar to the spill from 23 April 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00331",
+   "site_name": "Hockford (Pirbright)",
+   "river": "Stanford Brook",
+   "time": "15:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "1 mm of rain in the last hour",
+    "this overflow's spill history",
+    "2 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 70,
+    "rain_7d": 14.5
+   },
+   "timestamp": "2026-01-08 15:00:00+00:00",
+   "p": 0.06221824387405021,
+   "text": "Hockford (Pirbright) on Stanford Brook has a raised risk of spilling within 6 hours (6% chance). Main reasons: 1 mm of rain in the last hour; this overflow's spill history; 2 mm of rain in the last 6 hours. Conditions are like 5 Jan 2025, when it spilled for 70 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00119",
+   "site_name": "Cricklade",
+   "river": "Tributary of River Thames",
+   "time": "16:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "2 mm of rain in the last hour",
+    "4 mm of rain in the last 6 hours",
+    "4 mm of rain in the last 3 hours"
+   ],
+   "similar": {
+    "date": "5 Sep 2024",
+    "duration_h": 2,
+    "rain_7d": 9.7
+   },
+   "timestamp": "2026-01-08 16:00:00+00:00",
+   "p": 0.06838676007597062,
+   "text": "Cricklade on Tributary of River Thames has a raised risk of spilling within 6 hours (7% chance). A spill is likely due to 2 mm of rain in the last hour, 4 mm of rain in the last 6 hours, and 4 mm of rain in the last 3 hours, which is similar to the spill in the Tributary of River Thames on 5 September 2024.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00437",
+   "site_name": "West Heath Ramsdell",
+   "river": "Tributary of Bow Brook",
+   "time": "16:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "2 mm of rain in the last hour",
+    "5 mm of rain in the last 6 hours",
+    "6 mm of rain in the last 24 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 89,
+    "rain_7d": 17.8
+   },
+   "timestamp": "2026-01-08 16:00:00+00:00",
+   "p": 0.06813190367178838,
+   "text": "West Heath Ramsdell on Tributary of Bow Brook has a raised risk of spilling within 6 hours (7% chance). A spill is likely due to 2 mm of rain in the last hour, 5 mm of rain in the last 6 hours, and 6 mm of rain in the last 24 hours, which is similar to the spill in the past case on 5 January 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00181",
+   "site_name": "Farnborough (Warks)",
+   "river": "Tributary of Hanwell Brook",
+   "time": "16:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "1 mm of rain in the last hour",
+    "this overflow's spill history",
+    "2 mm of rain in the last 3 hours"
+   ],
+   "similar": {
+    "date": "1 Jan 2025",
+    "duration_h": 5,
+    "rain_7d": 2.6
+   },
+   "timestamp": "2026-01-08 16:00:00+00:00",
+   "p": 0.05500045001950841,
+   "text": "Farnborough (Warks) on Tributary of Hanwell Brook has a raised risk of spilling within 6 hours (6% chance). A spill is likely due to 1 mm of rain in the last hour, 2 mm of rain in the last 3 hours, and a similar past case of spilled for 5 hours.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00726",
+   "site_name": "Moreton-In-Marsh (Primrose Court)",
+   "river": "River Evenlode",
+   "time": "17:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "2 mm of rain in the last hour",
+    "5 mm of rain in the last 6 hours",
+    "4 mm of rain in the last 3 hours"
+   ],
+   "similar": {
+    "date": "28 Apr 2024",
+    "duration_h": 19,
+    "rain_7d": 12.4
+   },
+   "timestamp": "2026-01-08 17:00:00+00:00",
+   "p": 0.06838676007597062,
+   "text": "Moreton-In-Marsh (Primrose Court) on the River Evenlode has a raised risk of spilling within 6 hours (7% chance). The spill is likely due to the 2 mm of rain in the last hour, 5 mm of rain in the last 6 hours, and 4 mm of rain in the last 3 hours, which are similar to the spill in the past case on 28 April 2024.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00024",
+   "site_name": "Bampton",
+   "river": "Shill Brook",
+   "time": "17:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "2 mm of rain in the last hour",
+    "6 mm of rain in the last 6 hours",
+    "6 mm of rain in the last 24 hours"
+   ],
+   "similar": {
+    "date": "5 Sep 2024",
+    "duration_h": 2,
+    "rain_7d": 10.4
+   },
+   "timestamp": "2026-01-08 17:00:00+00:00",
+   "p": 0.06528268161074458,
+   "text": "Bampton on Shill Brook has a raised risk of spilling within 6 hours (7% chance). A spill is likely due to 2 mm of rain in the last hour, 6 mm of rain in the last 6 hours, and 6 mm of rain in the last 24 hours, as it is similar to the spill in the past case on 5 September 2024.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00122",
+   "site_name": "Cropredy",
+   "river": "River Cherwell",
+   "time": "17:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "1 mm of rain in the last hour",
+    "3 mm of rain in the last 6 hours",
+    "3 mm of rain in the last 3 hours"
+   ],
+   "similar": {
+    "date": "1 Jan 2025",
+    "duration_h": 3,
+    "rain_7d": 4.0
+   },
+   "timestamp": "2026-01-08 17:00:00+00:00",
+   "p": 0.06385662451985469,
+   "text": "Cropredy on the River Cherwell has a raised risk of spilling within 6 hours (6% chance). A spill is likely due to 1 mm of rain in the last hour, 3 mm of rain in the last 6 hours, and 3 mm of rain in the last 3 hours, as it is similar to the spill in 1 Jan 2025 that spilled for 3 hours.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00452",
+   "site_name": "Windsor",
+   "river": "River Thames",
+   "time": "17:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "5 mm of rain in the last 6 hours",
+    "2 mm of rain in the last hour",
+    "6 mm of rain in the last 24 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 71,
+    "rain_7d": 15.1
+   },
+   "timestamp": "2026-01-08 17:00:00+00:00",
+   "p": 0.06385662451985469,
+   "text": "Windsor on the River Thames has a raised risk of spilling within 6 hours (6% chance). A spill is likely due to 5 mm of rain in the last 6 hours, 2 mm of rain in the last hour, and 6 mm of rain in the last 24 hours, which is similar to the spill in 5 Jan 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00283",
+   "site_name": "Ludgershall",
+   "river": "Ludgershall Brook",
+   "time": "17:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "2 mm of rain in the last hour",
+    "4 mm of rain in the last 6 hours",
+    "4 mm of rain in the last 3 hours"
+   ],
+   "similar": {
+    "date": "24 Jan 2025",
+    "duration_h": 13,
+    "rain_7d": 6.0
+   },
+   "timestamp": "2026-01-08 17:00:00+00:00",
+   "p": 0.062152098582894034,
+   "text": "Ludgershall on Ludgershall Brook has a raised risk of spilling within 6 hours (6% chance). A potential spill is likely due to 2 mm of rain in the last hour, 4 mm of rain in the last 6 hours, and 4 mm of rain in the last 3 hours, as seen in the same past case on 24 January 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00303",
+   "site_name": "Milton-Under-Wychwood",
+   "river": "Littlestock Brook",
+   "time": "17:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "2 mm of rain in the last hour",
+    "5 mm of rain in the last 6 hours",
+    "6 mm of rain in the last 24 hours"
+   ],
+   "similar": {
+    "date": "23 Feb 2025",
+    "duration_h": 102,
+    "rain_7d": 13.9
+   },
+   "timestamp": "2026-01-08 17:00:00+00:00",
+   "p": 0.055775750575990594,
+   "text": "Milton-Under-Wychwood on Littlestock Brook has a raised risk of spilling within 6 hours (6% chance). A spill is likely due to 2 mm of rain in the last hour, 5 mm of rain in the last 6 hours, and 6 mm of rain in the last 24 hours, which is similar to the spill in Milton-Under-Wychwood on Littlestock Brook in February 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00422",
+   "site_name": "Wanborough",
+   "river": "Liden Brook",
+   "time": "18:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "12 mm of rain in the last 24 hours",
+    "15 mm of rain in the last 7 days",
+    "11 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "1 Jan 2025",
+    "duration_h": 1,
+    "rain_7d": 12.8
+   },
+   "timestamp": "2026-01-08 18:00:00+00:00",
+   "p": 0.06813190367178838,
+   "text": "Wanborough on Liden Brook has a raised risk of spilling within 6 hours (7% chance). The recent rain amounts of 12 mm, 15 mm, and 11 mm in the last 24, 7, and 6 hours, respectively, combined with the 1-hour spill from the previous case on 1 January 2025, suggest a high likelihood of a spill occurring in Wanborough on Liden Brook.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00061",
+   "site_name": "Bucklebury (Briff Lane)",
+   "river": "Briff Lane Stream",
+   "time": "18:00 08 Jan 2026 UTC",
+   "probability_pct": 7,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "13 mm of rain in the last 24 hours",
+    "4 mm of rain in the last hour",
+    "22 mm of rain in the last 7 days"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 44,
+    "rain_7d": 22.6
+   },
+   "timestamp": "2026-01-08 18:00:00+00:00",
+   "p": 0.06662398476327891,
+   "text": "Bucklebury (Briff Lane) on Briff Lane Stream has a raised risk of spilling within 6 hours (7% chance). Main reasons: 13 mm of rain in the last 24 hours; 4 mm of rain in the last hour; 22 mm of rain in the last 7 days. Conditions are like 5 Jan 2025, when it spilled for 44 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00419",
+   "site_name": "Uffington",
+   "river": "Uffington Brook",
+   "time": "18:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "12 mm of rain in the last 24 hours",
+    "11 mm of rain in the last 6 hours",
+    "4 mm of rain in the last hour"
+   ],
+   "similar": {
+    "date": "24 Jan 2025",
+    "duration_h": 14,
+    "rain_7d": 12.6
+   },
+   "timestamp": "2026-01-08 18:00:00+00:00",
+   "p": 0.06322894077341448,
+   "text": "Uffington on Uffington Brook has a raised risk of spilling within 6 hours (6% chance). Main reasons: 12 mm of rain in the last 24 hours; 11 mm of rain in the last 6 hours; 4 mm of rain in the last hour. Conditions are like 24 Jan 2025, when it spilled for 14 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00120",
+   "site_name": "Crondall",
+   "river": "River Hart",
+   "time": "18:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "14 mm of rain in the last 24 hours",
+    "5 mm of rain in the last hour",
+    "22 mm of rain in the last 7 days"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 41,
+    "rain_7d": 26.9
+   },
+   "timestamp": "2026-01-08 18:00:00+00:00",
+   "p": 0.0558414523055974,
+   "text": "Crondall on the River Hart has a raised risk of spilling within 6 hours (6% chance). The recent 14 mm of rain in the last 24 hours, 5 mm of rain in the last hour, and 22 mm of rain in the last 7 days combined with a similar past case of spilled sewage in 5 January 2025, suggests a high likelihood of a sewage spill in the area.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00464",
+   "site_name": "Worminghall",
+   "river": "Worminghall Brook",
+   "time": "19:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "12 mm of rain in the last 24 hours",
+    "19 mm of rain in the last 7 days",
+    "11 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "28 Apr 2024",
+    "duration_h": 38,
+    "rain_7d": 18.4
+   },
+   "timestamp": "2026-01-08 19:00:00+00:00",
+   "p": 0.06322894077341448,
+   "text": "Worminghall on Worminghall Brook has a raised risk of spilling within 6 hours (6% chance). The spill is likely due to the 12 mm of rain in the last 24 hours, 19 mm of rain in the last 7 days, and 11 mm of rain in the last 6 hours, which are all contributing factors to the spill in Worminghall on Worminghall Brook.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00085",
+   "site_name": "Charlton-On-Otmoor",
+   "river": "River Ray",
+   "time": "19:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "11 mm of rain in the last 24 hours",
+    "10 mm of rain in the last 6 hours",
+    "3 mm of rain in the last hour"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 135,
+    "rain_7d": 20.8
+   },
+   "timestamp": "2026-01-08 19:00:00+00:00",
+   "p": 0.056994279280337894,
+   "text": "Charlton-On-Otmoor on the River Ray has a raised risk of spilling within 6 hours (6% chance). Main reasons: 11 mm of rain in the last 24 hours; 10 mm of rain in the last 6 hours; 3 mm of rain in the last hour. Conditions are like 5 Jan 2025, when it spilled for 135 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00309",
+   "site_name": "Newbury",
+   "river": "River Kennet",
+   "time": "19:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "14 mm of rain in the last 24 hours",
+    "20 mm of rain in the last 7 days",
+    "2 mm of rain in the last hour"
+   ],
+   "similar": {
+    "date": "24 Jan 2025",
+    "duration_h": 11,
+    "rain_7d": 19.6
+   },
+   "timestamp": "2026-01-08 19:00:00+00:00",
+   "p": 0.055213768559157196,
+   "text": "Newbury on the River Kennet has a raised risk of spilling within 6 hours (6% chance). The recent 14 mm of rain in the last 24 hours, 20 mm of rain in the last 7 days, and 2 mm of rain in the last hour combined with the 11-hour spill in Newbury on the River Kennet suggests a high likelihood of a spill occurring in the next 6 hours.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00038",
+   "site_name": "Bicester",
+   "river": "Langford Brook",
+   "time": "19:00 08 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "11 mm of rain in the last 24 hours",
+    "21 mm of rain in the last 7 days",
+    "10 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 60,
+    "rain_7d": 20.5
+   },
+   "timestamp": "2026-01-08 19:00:00+00:00",
+   "p": 0.05500045001950841,
+   "text": "Bicester on Langford Brook has a raised risk of spilling within 6 hours (6% chance). Main reasons: 11 mm of rain in the last 24 hours; 21 mm of rain in the last 7 days; 10 mm of rain in the last 6 hours. Conditions are like 5 Jan 2025, when it spilled for 60 hours.",
+   "source": "template"
+  },
+  {
+   "site_id": "TWL00098",
+   "site_name": "Church Hanborough",
+   "river": "Hanborough Stream",
+   "time": "19:00 08 Jan 2026 UTC",
+   "probability_pct": 5,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "12 mm of rain in the last 24 hours",
+    "2 mm of rain in the last hour",
+    "10 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 90,
+    "rain_7d": 20.7
+   },
+   "timestamp": "2026-01-08 19:00:00+00:00",
+   "p": 0.0543727662730682,
+   "text": "Church Hanborough on Hanborough Stream has a raised risk of spilling within 6 hours (5% chance). A potential spill is likely due to 12 mm of rain in the last 24 hours, 2 mm of rain in the last hour, and 10 mm of rain in the last 6 hours, which is similar to the spill in 5 Jan 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00425",
+   "site_name": "Wantage",
+   "river": "Letcombe Brook",
+   "time": "19:00 08 Jan 2026 UTC",
+   "probability_pct": 5,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "1 mm of rain in the last hour",
+    "12 mm of rain in the last 24 hours",
+    "11 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "6 Sep 2024",
+    "duration_h": 1,
+    "rain_7d": 18.1
+   },
+   "timestamp": "2026-01-08 19:00:00+00:00",
+   "p": 0.0543727662730682,
+   "text": "Wantage on Letcombe Brook has a raised risk of spilling within 6 hours (5% chance). A spill is likely due to 1 mm of rain in the last hour, 12 mm of rain in the last 24 hours, and 11 mm of rain in the last 6 hours, which is similar to the spill in 6 Sep 2024.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00309",
+   "site_name": "Newbury",
+   "river": "River Kennet",
+   "time": "04:00 09 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "16 mm of rain in the last 24 hours",
+    "22 mm of rain in the last 7 days",
+    "2 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "28 Apr 2024",
+    "duration_h": 18,
+    "rain_7d": 24.5
+   },
+   "timestamp": "2026-01-09 04:00:00+00:00",
+   "p": 0.055991682122118,
+   "text": "Newbury on the River Kennet has a raised risk of spilling within 6 hours (6% chance). The recent 16 mm of rain in the last 24 hours, 22 mm of rain in the last 7 days, and 2 mm of rain in the last 6 hours combined with the 18-hour spill from the previous case suggest a high likelihood of a spill occurring in Newbury on the River Kennet.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00433",
+   "site_name": "Watlington",
+   "river": "Pyrton Stream",
+   "time": "05:00 09 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "24 mm of rain in the last 7 days",
+    "0.8 mm of rain in the last hour",
+    "this overflow's spill history"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 4,
+    "rain_7d": 26.2
+   },
+   "timestamp": "2026-01-09 05:00:00+00:00",
+   "p": 0.06138495896309384,
+   "text": "Watlington on Pyrton Stream has a raised risk of spilling within 6 hours (6% chance). A spill is likely due to 24 mm of rain in the last 7 days, 0.8 mm of rain in the last hour, and the same spill history as the previous case on 5 January 2025.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00369",
+   "site_name": "Shutford",
+   "river": "Shutford Stream",
+   "time": "05:00 09 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "1 mm of rain in the last hour",
+    "18 mm of rain in the last 24 hours",
+    "3 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "22 May 2024",
+    "duration_h": 42,
+    "rain_7d": 22.2
+   },
+   "timestamp": "2026-01-09 05:00:00+00:00",
+   "p": 0.05726750939648729,
+   "text": "Shutford on Shutford Stream has a raised risk of spilling within 6 hours (6% chance). A spill is likely due to 1 mm of rain in the last hour, 18 mm of rain in the last 24 hours, and 3 mm of rain in the last 6 hours, which is similar to the spill in the past case on 22 May 2024.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00120",
+   "site_name": "Crondall",
+   "river": "River Hart",
+   "time": "05:00 09 Jan 2026 UTC",
+   "probability_pct": 5,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "16 mm of rain in the last 24 hours",
+    "25 mm of rain in the last 7 days",
+    "1 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 41,
+    "rain_7d": 27.3
+   },
+   "timestamp": "2026-01-09 05:00:00+00:00",
+   "p": 0.054724777467492186,
+   "text": "Crondall on the River Hart has a raised risk of spilling within 6 hours (5% chance). The spill is likely due to the 16 mm of rain in the last 24 hours, 25 mm of rain in the last 7 days, and 1 mm of rain in the last 6 hours, which are all contributing factors to the spill risk in the Crondall on the River Hart area.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00309",
+   "site_name": "Newbury",
+   "river": "River Kennet",
+   "time": "06:00 09 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "16 mm of rain in the last 24 hours",
+    "22 mm of rain in the last 7 days",
+    "2 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "28 Apr 2024",
+    "duration_h": 18,
+    "rain_7d": 24.5
+   },
+   "timestamp": "2026-01-09 06:00:00+00:00",
+   "p": 0.06322894077341448,
+   "text": "Newbury on the River Kennet has a raised risk of spilling within 6 hours (6% chance). The recent 16 mm of rain in the last 24 hours, 22 mm of rain in the last 7 days, and 2 mm of rain in the last 6 hours combined with the 18-hour spill from the previous case suggest a high likelihood of a spill occurring in Newbury on the River Kennet.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00004",
+   "site_name": "Abingdon",
+   "river": "Odhay Hill Ditch",
+   "time": "07:00 09 Jan 2026 UTC",
+   "probability_pct": 6,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "15 mm of rain in the last 24 hours",
+    "2 mm of rain in the last 6 hours",
+    "22 mm of rain in the last 7 days"
+   ],
+   "similar": {
+    "date": "28 Apr 2024",
+    "duration_h": 6,
+    "rain_7d": 22.9
+   },
+   "timestamp": "2026-01-09 07:00:00+00:00",
+   "p": 0.055991682122118,
+   "text": "Abingdon on Odhay Hill Ditch has a raised risk of spilling within 6 hours (6% chance). The spill is likely due to the 15 mm of rain in the last 24 hours, 2 mm of rain in the last 6 hours, and 22 mm of rain in the last 7 days, which are all contributing factors to the spill in the Abingdon on Odhay Hill Ditch.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00180",
+   "site_name": "Faringdon",
+   "river": "Faringdon Stream",
+   "time": "07:00 09 Jan 2026 UTC",
+   "probability_pct": 5,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "0.6 mm of rain in the last hour",
+    "3 mm of rain in the last 6 hours",
+    "16 mm of rain in the last 24 hours"
+   ],
+   "similar": {
+    "date": "6 Sep 2024",
+    "duration_h": 4,
+    "rain_7d": 19.6
+   },
+   "timestamp": "2026-01-09 07:00:00+00:00",
+   "p": 0.05390089370942811,
+   "text": "Faringdon on Faringdon Stream has a raised risk of spilling within 6 hours (5% chance). The spill is likely due to the 0.6 mm of rain in the last hour, 3 mm of rain in the last 6 hours, and 16 mm of rain in the last 24 hours, which are all contributing factors to the spill in the Faringdon on Faringdon Stream.",
+   "source": "granite"
+  },
+  {
+   "site_id": "TWL00120",
+   "site_name": "Crondall",
+   "river": "River Hart",
+   "time": "07:00 09 Jan 2026 UTC",
+   "probability_pct": 5,
+   "decision": "NOTIFY",
+   "action": "Send the operator a plain-English alert",
+   "horizon_h": 6,
+   "drivers": [
+    "16 mm of rain in the last 24 hours",
+    "25 mm of rain in the last 7 days",
+    "2 mm of rain in the last 6 hours"
+   ],
+   "similar": {
+    "date": "5 Jan 2025",
+    "duration_h": 41,
+    "rain_7d": 27.3
+   },
+   "timestamp": "2026-01-09 07:00:00+00:00",
+   "p": 0.05371215677252328,
+   "text": "Crondall on the River Hart has a raised risk of spilling within 6 hours (5% chance). Main reasons: 16 mm of rain in the last 24 hours; 25 mm of rain in the last 7 days; 2 mm of rain in the last 6 hours. Conditions are like 5 Jan 2025, when it spilled for 41 hours.",
+   "source": "template"
+  }
+ ]
+}
