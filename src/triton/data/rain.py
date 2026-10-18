@@ -153,6 +153,10 @@ def fetch_site_rain(sites, start, end, cache_dir, pause=8.0):
         print(f"  rain {i}/{len(sites)}: {row.site_id} {row.name}")
         df = parse_archive(fetch_archive(row.lat, row.lon, start, end), row.site_id)
         df.to_csv(path, index=False)
+        # older downloads for this site are superseded by the longer range
+        for old in cache_dir.glob(f"{row.site_id}_{start}_*.csv.gz"):
+            if old != path:
+                old.unlink()
         frames.append(df)
         time.sleep(pause)
     rain = pd.concat(frames, ignore_index=True)
